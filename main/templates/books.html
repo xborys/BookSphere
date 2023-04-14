@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <br>
+        <h1>Books</h1>
+        {% if books == None %}
+            <p>No books in library</p>
+        {% else %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Publish date</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for books in books %}
+                        <tr>
+                            <th scope="row"></th>
+                            <td>{{ books.title }}</td>
+                            <td>{{ books.author }}</td>
+                            <td>{{ books.category }}</td>
+                            <td>{{ books.title }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}
