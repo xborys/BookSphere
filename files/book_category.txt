@@ -1,0 +1,11 @@
+Novel
+Poetry
+Drama
+Non-fiction
+Scientific literature
+Fantasy
+Crime fiction
+Romance
+Horror
+Children's and Young Adult literature
+other
