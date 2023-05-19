@@ -4,6 +4,7 @@
     <div class="container">
         <br>
         <h1>Books</h1>
+        <a class="btn btn-primary" href="{% url 'add-book' %}" role="button">Add book</a>
         {% if books == None %}
             <p>No books in library</p>
         {% else %}

@@ -4,6 +4,7 @@
     <div class="container">
         <br>
         <h1>Authors</h1>
+        <a class="btn btn-primary" href="{% url 'add-author' %}" role="button">Add author</a>
         {% if authors == None %}
             <p>No authors in library</p>
         {% else %}
