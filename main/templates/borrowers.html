@@ -3,9 +3,9 @@
 {% block content %}
     <div class="container">
         <br>
-        <h1>Authors</h1>
-        {% if authors == None %}
-            <p>No authors in library</p>
+        <h1>Books</h1>
+        {% if borrowers == None %}
+            <p>No borrowers in library</p>
         {% else %}
             <table class="table">
                 <thead>
@@ -13,18 +13,18 @@
                     <th scope="col"></th>
                     <th scope="col">Name</th>
                     <th scope="col">Lastname</th>
-                    <th scope="col">Nationality</th>
-                    <th scope="col">Birth</th>
+                    <th scope="col">e-mail</th>
+                    <th scope="col">Phone number</th>
                 </tr>
                 </thead>
                 <tbody>
-                    {% for author in authors %}
+                    {% for borrower in borrowers %}
                         <tr>
                             <th scope="row"></th>
-                            <td>{{ author.name }}</td>
-                            <td>{{ author.lastname }}</td>
-                            <td>{{ author.nationality }}</td>
-                            <td>{{ author.birth }}</td>
+                            <td>{{ borrower.name }}</td>
+                            <td>{{ borrower.lastname }}</td>
+                            <td>{{ borrower.email }}</td>
+                            <td>{{ borrower.phone }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <br>
+        <h1>Books</h1>
+        {% if books_loan == None %}
+            <p>No borrowers in library</p>
+        {% else %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Borrower</th>
+                    <th scope="col">Book</th>
+                    <th scope="col">Start loan</th>
+                    <th scope="col">End loan</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for book in books_loan %}
+                        <tr>
+                            <th scope="row"></th>
+                            <td>{{ book.borrower.name }} {{book.borrower.lastname}}</td>
+                            <td>{{ book.book.author }} {{ book.book.title }}</td>
+                            <td>{{ book.start_loan }}</td>
+                            <td>
+                                {% if book.end_loan == None %}
+                                    Book is not returned
+                                {% else %}
+                                    {{ book.end_loan }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}
