@@ -3,9 +3,10 @@
 {% block content %}
     <div class="container">
         <br>
-        <h1>Books</h1>
+        <h1>Books loan</h1>
+        <a class="btn btn-primary" href="{% url 'add-book-loan' %}" role="button">Add loan</a>
         {% if books_loan == None %}
-            <p>No borrowers in library</p>
+            <p>No books loan</p>
         {% else %}
             <table class="table">
                 <thead>
@@ -22,7 +23,7 @@
                         <tr>
                             <th scope="row"></th>
                             <td>{{ book.borrower.name }} {{book.borrower.lastname}}</td>
-                            <td>{{ book.book.author }} {{ book.book.title }}</td>
+                            <td>{{ book.book.author }} - {{ book.book.title }}</td>
                             <td>{{ book.start_loan }}</td>
                             <td>
                                 {% if book.end_loan == None %}

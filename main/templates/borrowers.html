@@ -3,7 +3,8 @@
 {% block content %}
     <div class="container">
         <br>
-        <h1>Books</h1>
+        <h1>Borrowers</h1>
+        <a class="btn btn-primary" href="{% url 'add-borrower' %}" role="button">Add borrower</a>
         {% if borrowers == None %}
             <p>No borrowers in library</p>
         {% else %}

@@ -9,5 +9,7 @@ urlpatterns = [
     path('authors/', views.authors, name='authors'),
     path('authors/add_author/', views.add_author, name='add-author'),
     path('borrower/', views.borrowers, name='borrowers'),
+    path('borrower/add_borrower/', views.add_borrower, name='add-borrower'),
     path('books_loan/', views.book_loan, name='books_loan'),
+    path('books_loan/add_book_loan/', views.add_book_loan, name='add-book-loan'),
 ]

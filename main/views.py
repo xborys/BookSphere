@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import book, author, borrower, books_loan
-from .forms import AuthorForm, BookForm
+from .forms import AuthorForm, BookForm, BorrowerForm, BookLoanForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -18,6 +18,8 @@ def add_book(request):
         form = BookForm(request.POST)
         if form.is_valid:
             form.save()
+            next = request.GET.get('next', reverse('books'))
+            return  HttpResponseRedirect(next)
     else:
         form = BookForm()
 
@@ -35,6 +37,8 @@ def add_author(request):
         form = AuthorForm(request.POST)
         if form.is_valid():
             form.save()
+            next = request.GET.get('next', reverse('authors'))
+            return  HttpResponseRedirect(next)
     else:
         form = AuthorForm()
 
@@ -48,8 +52,34 @@ def borrowers(request):
     return render(request, 'borrowers.html',
                   {'borrowers' : borrowers})
 
+def add_borrower(request):
+    if request.method == 'POST':
+        form = BorrowerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            next = request.GET.get('next', reverse('borrowers'))
+            return  HttpResponseRedirect(next)
+    else:
+        form = BorrowerForm()
+
+    return render(request, 'add_borrower.html',
+                  {'form' : form})
+
 def book_loan(request):
     book_loan = books_loan.objects.all()
 
     return render(request, 'books_loan.html',
                   {'books_loan' : book_loan})
+
+def add_book_loan(request):
+    if request.method == 'POST':
+        form = BookLoanForm(request.POST)
+        if form.is_valid():
+            form.save()
+            next = request.GET.get('next', reverse('books_loan'))
+            return HttpResponseRedirect(next)
+    else:
+        form = BookLoanForm()
+
+    return render(request, 'add_book_loan.html',
+                  {'form' : form})

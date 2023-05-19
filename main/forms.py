@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import author, book
+from .models import author, book, borrower, books_loan
 from django.forms.widgets import NumberInput
 from django.contrib.admin.widgets import AdminDateWidget
 
@@ -44,3 +44,38 @@ class BookForm(forms.ModelForm):
             'description' : forms.Textarea(attrs={'class':'form-control', 'placeholder':'Description'})
         }
 
+class BorrowerForm(forms.ModelForm):
+    class Meta:
+        model = borrower
+        fields = ('name', 'lastname', 'email', 'phone')
+
+        labels = {
+            'name' : '',
+            'lastname' : '',
+            'email' : '',
+            'phone' : ''
+        }
+
+        widgets = {
+            'name' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'First name'}),
+            'lastname' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Last name'}),
+            'email' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'email'}),
+            'phone' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Phone number'})
+        }
+
+class BookLoanForm(forms.ModelForm):
+    class Meta:
+        model = books_loan
+        fields = ('borrower', 'book', 'end_loan')
+
+        labels = {
+            'borrower' : '',
+            'book' : '',
+            'end_loan' : ''
+        }
+
+        widgets = {
+            'borrower' : forms.Select(attrs={'class':'form-control', 'placeholder':'Select borrower'}),
+            'book' : forms.Select(attrs={'class':'form-control', 'placeholder':'Select book'}),
+            'end_loan' : forms.DateInput(attrs={'class': 'form-control', 'type': 'date'})
+        }
